@@ -1,0 +1,53 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+    <style>
+        .bodybg {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url("../image/bg3.jpg")
+        }
+    </style>
+</head>
+
+<body class="text-center bodybg">
+<form class="form-signin">
+    <h1 class="h4 mb-3 font-weight-normal" style="color: white">Register and invite your friends!</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-3">
+        <input type="checkbox" id="checkbox" value="remember-me"> <label for="checkbox" style="color: white">Remember me</label>
+    </div>
+
+    <button id="acc" class="btn btn-lg btn btn-danger btn-block" type="submit">Sign Up</button>
+    <a id="change" onclick="changeMethod()" style="color: white">Already have an account? please login</a>
+    <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
+</form>
+<script>
+    function changeMethod() {
+        var text = document.findElementById("acc").textContent;
+        if (text == "Sign Up") {
+            document.findElementById("acc").innerHTML = "Login";
+            document.findElementById("change").innerHTML = "Do not have an account, click to sign up";
+        } else {
+            document.findElementById("acc").innerHTML = "Sign Up";
+            document.findElementById("change").innerHTML = "Already have an account? please login";
+        }
+    }
+</script>
+</body>
+</html>
