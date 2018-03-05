@@ -1,5 +1,179 @@
-<p>This is the partial for view 2.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Blog Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/examples/blog/blog.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 text-center">
+                <a class="blog-header-logo text-dark" href="#">MovieDate</a>
+            </div>
+            <div class="col-4 text-center">
+                <a class="p-2 text-muted" href="#">About</a>
+                <a class="p-2 text-muted" href="#">News</a>
+                <a class="p-2 text-muted" href="#">Contact</a>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+                <a class="text-muted" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+                </a>
+                <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-end">
+            <a class="p-2 text-muted" href="#">Invite Friends</a>
+        </nav>
+    </div>
+    <div class="row mb-2">
+        <div class="rounded col-md-7">
+            <div id="player"></div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <div class="card box-shadow h-md-250">
+                <div class="card-body">
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="#">Featured post</a>
+                    </h3>
+                    <div class="mb-1 text-muted">Nov 12</div>
+                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="card box-shadow col-md-7 col3">
+            <nav class="navbar navbar-light bg-light">
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </nav>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <div class="card box-shadow h-md-250">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<footer class="blog-footer">
+    <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p>
+        <a href="#">Back to top</a>
+    </p>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script>
+    Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+    });
+</script>
+<script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '360',
+            width: '640',
+            videoId: 'DNyKDI9pn0Q',
+        });
+    }
+    //https://www.youtube.com/watch?v=KIdh9xmeJOw
+
+
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
+
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    var done = false;
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+            setTimeout(stopVideo, 6000);
+            done = true;
+        }
+    }
+    function stopVideo() {
+        player.stopVideo();
+    }
+
+    //6. get statics
+
+    function getStatistics(){
+        getDuration();
+        getVideoLoadedFraction();
+        getPlayerState();
+        getCurrentTime();
+        getPlaybackQuality();
+        //write to fire basee here.
+    }
+    function getDuration(){
+        var videoDuration = player.getDuration();
+        document.getElementById("videoduration").innerHTML = videoDuration;
+    }
+
+    function getVideoLoadedFraction(){
+        var loadedFrac = player.getVideoLoadedFraction();
+        document.getElementById("percentloaded").innerHTML = loadedFrac;
+    }
+    function getPlayerState(){
+        var playerState = player.getPlayerState();
+        document.getElementById("playerstate").innerHTML = playerState;
+    }
+    function getCurrentTime(){
+        var curTime = player.getCurrentTime();
+        document.getElementById("videotime").innerHTML = curTime;
+    }
+    function getPlaybackQuality(){
+        var playBackQA = player.getPlaybackQuality();
+        document.getElementById("playbackquality").innerHTML = playBackQA;
+    }
+
+</script>
+</body>
+</html>
