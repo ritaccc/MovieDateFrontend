@@ -1,70 +1,250 @@
 <!DOCTYPE html>
-<html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html ng-app="myApp">
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MovieDate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <link href="https://getbootstrap.com/docs/4.0/examples/blog/blog.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/navbar-fixed-top/navbar-fixed-top.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="sign-up-login/sign-up-login.js"></script>
+    <script src="movie/movie.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
+</head>
 
-  <link type="text/css" href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-
-<body ng-app="myApp" class="text-center" background="image/bg3.jpg">
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <!--<h3 class="masthead-brand">MovieDate</h3>-->
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="btn btn-lg btn-outline-secondary" href="sign-up-login/sign-up-login.html" style="color: white">Sign up</a>
-      </nav>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="col-4 text-center">
+            <a class="blog-header-logo text-danger" href="#">MovieDate</a>
+        </div>
+        <div class="col-4 text-center">
+            <a class="p-2 text-muted" href="#home">Home</a>
+            <a class="p-2 text-muted" href="#letswatch">Let's Watch</a>
+            <a class="p-2 text-muted" href="#aboutus">About us</a>
+            <a class="p-2 text-muted" href="#sign-up-login">Sign Up/Login</a>
+        </div>
     </div>
-  </header>
+</nav>
 
-  <main role="main" class="inner cover">
-    <h1 class="cover-heading">MovieDate</h1>
-    <p class="lead">Watch videos with your friends even if you are in distance!</p>
-    <p class="lead">
-      <a href="movie/movie.html" class="btn btn-lg btn-secondary">Let's start!</a>
-    </p>
-  </main>
-
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <p>Copy Right Reserved by Mengxuan Cai AND <a href="https://getbootstrap.com/">Bootstrap</a></p>
+<div id="home" class="container-fluid">
+    <div class="steps">
+        <ol class="rounded-list">
+            <li><a href="">Sign In/ Sign Up</a></li>
+            <li><a href="">Create your space</a></li>
+            <li><a href="">Invite your friends</a></li>
+            <li><a href="">Share the movie link with everyone</a></li>
+            <li><a href="">Video call everyone in your space</a></li>
+        </ol>
     </div>
-  </footer>
 </div>
 
-  <!--<ul class="menu">-->
-    <!--<li><a href="#!/sign-up-login">sign-up-login</a></li>-->
-    <!--<li><a href="#!/movie">movie</a></li>-->
-  <!--</ul>-->
+<div id="signinpopup" class="signinpop">
 
-  <!--<div ng-view></div>-->
+</div>
 
-  <!--<div>Angular seed app: v<span app-version></span></div>-->
+<div id="letswatch" class="container">
 
-  <script src="bower_components/angular/angular.min.js"></script>
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="sign-up-login/sign-up-login.js"></script>
-  <script src="movie/movie.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-end">
+            <a class="p-2 text-muted" onclick="inviteFriend()" href="#">Invite Friends</a>
+        </nav>
+    </div>
+
+    <div class="row mb-2">
+        <div class="rounded col-md-7">
+            <div id="player"></div>
+        </div>
+        <div class="col-md-1"></div>
+
+
+        <div class="col-md-4">
+            <button onclick="getStatistics()">Get Statistics</button>
+            <div style="overflow-y: scroll" class="card box-shadow h-md-350">
+                <div class="card-body">
+                    <!--<button onclick="writeToDatabase()">WriteToFirebase</button>-->
+                    <div id="player-demo-statistics-items">
+                        Duration: <span id="videoduration"> 0 </span><br>
+                        Current time: <span id="videotime">0</span><br>
+                        Player state: <span id="playerstate">video cued</span><br>
+                        Start bytes: <span id="startbytes">0</span><br>
+                        % of video loaded: <span id="percentloaded">--</span><br>
+                        Quality level: <span id="playbackquality">unknown</span><br>
+                        Available levels: <span id="availablelevels"></span><br>
+                        Volume (on/off): <span id="ismuted">on</span><br>
+                        <span id="playbackrate-statistics">
+                Playback rate: <span id="playbackrate">1</span><br>
+                Available rates: <span id="availableplaybackrates">0.25,0.5,0.75,1,1.25,1.5,2</span><br>
+              </span>
+                        <span id="bytesdisplay-deprecated">
+                <span class="deprecated-normal"><u>Deprecated</u></span><br>
+                Bytes loaded: <span id="bytesloaded">0</span><br>
+                Total bytes: <span id="bytestotal">1</span><br>
+              </span>
+                        <div id="playlist-statistics" style="display:none">
+                            <br>Number of videos in playlist: <span id="playlistcount">undefined</span><br>
+                            Position of current video: <span id="currentplaylistvideo">-1</span><br>
+                            Videos in playlist:<br>
+                            <span id="playlistvideos"> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-md-7 col3">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Insert Youtube Link">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Youtube</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <div class="card box-shadow h-md-250">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="aboutus" class="container">
+    <h4 class="text-center text-danger mx-auto">Mengxuan Cai</h4>
+    <h4 class="text-center text-danger mx-auto">Kekti</h4>
+    <h4 class="text-center text-danger mx-auto">Xiaoyu Zhou</h4>
+    <h4 class="text-center text-danger mx-auto">Tingting Wang</h4>
+
+</div>
+
+<footer class="mastfoot mt-auto">
+    <div class="inner">
+        <p>All Rights Reserved by Team MovieDate</p>
+    </div>
+</footer>
+<script>
+    Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+    });
+</script>
+<script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '380',
+            width: '700',
+            videoId: 'OL2FazadHoQ',
+        });
+    }
+
+    //https://www.youtube.com/watch?v=KIdh9xmeJOw
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
+
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    var done = false;
+
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+            setTimeout(stopVideo, 6000);
+            done = true;
+        }
+    }
+
+    function stopVideo() {
+        player.stopVideo();
+    }
+
+    //6. get statics
+    function getStatistics() {
+        getDuration();
+        getVideoLoadedFraction();
+        getPlayerState();
+        getCurrentTime();
+        getPlaybackQuality();
+        //write to fire basee here.
+    }
+
+    function getDuration() {
+        var videoDuration = player.getDuration();
+        document.getElementById("videoduration").innerHTML = videoDuration;
+    }
+
+    function getVideoLoadedFraction() {
+        var loadedFrac = player.getVideoLoadedFraction();
+        document.getElementById("percentloaded").innerHTML = loadedFrac;
+    }
+
+    function getPlayerState() {
+        var playerState = player.getPlayerState();
+        document.getElementById("playerstate").innerHTML = playerState;
+    }
+
+    function getCurrentTime() {
+        var curTime = player.getCurrentTime();
+        document.getElementById("videotime").innerHTML = curTime;
+    }
+
+    function getPlaybackQuality() {
+        var playBackQA = player.getPlaybackQuality();
+        document.getElementById("playbackquality").innerHTML = playBackQA;
+    }
+
+    function inviteFriend() {
+        var txt;
+        var person = prompt("Invite Friend:", "will generate invitation link");
+    }
+</script>
+
 </body>
 </html>
