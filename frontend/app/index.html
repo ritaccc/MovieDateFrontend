@@ -128,9 +128,9 @@
     <div class="row mb-2">
         <div class="col-md-7 col3">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Insert Youtube Link">
+                <input id="youtubelink" type="text" class="form-control" placeholder="Insert Youtube Link">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Youtube</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" onclick="getLink()" type="submit">Youtube</button>
                 </div>
             </div>
         </div>
@@ -166,6 +166,7 @@
     });
 </script>
 <script>
+    // Get \you
     // 2. This code loads the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
@@ -174,12 +175,21 @@
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
     var player;
-
+    var vid;
+    function getLink() {
+        var link = document.getElementById("youtubelink").value;
+        vid = link.split("=")[1];
+        player.loadVideoById(
+            vid,
+            0,
+            'large'
+        );
+    }
+    //
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
             height: '380',
             width: '700',
-            videoId: 'OL2FazadHoQ',
         });
     }
 
