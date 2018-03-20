@@ -118,3 +118,9 @@ footer{
     color: white;
     background-color: black;
 }
+#uname {
+    display: none;
+}
+#sign-out {
+    display: none;
+}

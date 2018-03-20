@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MovieDate</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="here enter your client-id">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -21,6 +22,8 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/3.3/examples/navbar-fixed-top/navbar-fixed-top.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -43,19 +46,23 @@
     <script src="components/version/interpolate-filter.js"></script>
 </head>
 
-
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-
+<body ng-app="myApp" data-spy="scroll" data-target=".navbar" data-offset="50">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <div class="col-4 text-center">
+        <div class="col-2 text-center">
             <a class="blog-header-logo text-danger" href="#">MovieDate</a>
         </div>
-        <div class="col-4 text-center">
+        <div ng-app="myNav" ng-controller="navCtrl" class="col-3 text-center">
             <a class="p-2 text-muted" href="#home">Home</a>
             <a class="p-2 text-muted" href="#letswatch">Let's Watch</a>
             <a class="p-2 text-muted" href="#aboutus">About us</a>
-            <a class="p-2 text-muted" href="#sign-up-login">Sign Up/Login</a>
+        </div>
+        <div class="text-center">
+            <a id="sign-in" class="g-signin2" data-onsuccess="onSignIn"></a>
+        </div>
+        <div class="text-center">
+            <a id="username" class="p-2 text-muted" href="#"></a>
+            <a id="sign-out" class="p-2 text-muted" href="#" onclick="signOut();">Sign out</a>
         </div>
     </div>
 </nav>
@@ -72,15 +79,30 @@
     </div>
 </div>
 
-<div id="signinpopup" class="signinpop">
-
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Invite Friend to Date!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Ops, please sign in before invite friend.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="return-to-signin" type="button" class="btn btn-danger btn-lg">Ok</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="letswatch" class="container">
 
     <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-end">
-            <a class="p-2 text-muted" onclick="inviteFriend()" href="#">Invite Friends</a>
+            <a id="invite-friend" class="p-2 text-muted" href="#">Invite Friends</a>
         </nav>
     </div>
 
@@ -152,12 +174,12 @@
     <h4 class="text-center text-danger mx-auto">Tingting Wang</h4>
 
 </div>
-
 <footer class="mastfoot mt-auto">
     <div class="inner">
         <p>All Rights Reserved by Team MovieDate</p>
     </div>
 </footer>
+<script src="index.js"></script>
 <script>
     Holder.addTheme('thumb', {
         bg: '#55595c',
@@ -250,11 +272,11 @@
         document.getElementById("playbackquality").innerHTML = playBackQA;
     }
 
-    function inviteFriend() {
-        var txt;
-        var person = prompt("Invite Friend:", "will generate invitation link");
+    function randomString(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
     }
 </script>
-
 </body>
 </html>
