@@ -84,6 +84,10 @@ ol ol {
     position: absolute;
     right: 0.1%;
 }
+.navbar {
+    margin-bottom: 0 !important;
+    padding: 0;
+}
 
 #home {
     padding-top:50px;

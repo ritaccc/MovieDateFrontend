@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="col-2 text-center">
+            <a class="blog-header-logo text-danger" href="#">MovieDate</a>
+        </div>
+        <div ng-app="myNav" ng-controller="navCtrl" class="col-3 text-center">
+            <a class="p-2 text-muted" href="#home">Home</a>
+            <a class="p-2 text-muted" href="#letswatch">Let's Watch</a>
+            <a class="p-2 text-muted" href="#aboutus">About us</a>
+        </div>
+        <div class="text-center">
+            <a id="sign-in" class="g-signin2" data-onsuccess="onSignIn"></a>
+        </div>
+        <div class="text-center">
+            <a id="username" class="p-2 text-muted" href="#"></a>
+            <a id="sign-out" class="p-2 text-muted" href="#" onclick="signOut();">Sign out</a>
+        </div>
+    </div>
+</nav>

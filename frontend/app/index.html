@@ -13,7 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MovieDate</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="google-signin-client_id" content="here enter your client-id">
+    <meta name="google-signin-client_id"
+          content="">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -39,23 +40,23 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="app.js"></script>
-    <script src="sign-up-login/sign-up-login.js"></script>
-    <script src="movie/movie.js"></script>
+    <script src="account.js"></script>
+    <script src="index.js"></script>
     <script src="components/version/version.js"></script>
     <script src="components/version/version-directive.js"></script>
     <script src="components/version/interpolate-filter.js"></script>
 </head>
 
 <body ng-app="myApp" data-spy="scroll" data-target=".navbar" data-offset="50">
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-fixed-top">
+    <div class="container-fluid">
         <div class="col-2 text-center">
             <a class="blog-header-logo text-danger" href="#">MovieDate</a>
         </div>
         <div ng-app="myNav" ng-controller="navCtrl" class="col-3 text-center">
             <a class="p-2 text-muted" href="#home">Home</a>
-            <a class="p-2 text-muted" href="#letswatch">Let's Watch</a>
-            <a class="p-2 text-muted" href="#aboutus">About us</a>
+            <a class="p-2 text-muted" href="movie/movie.html">Let's Watch</a>
+            <a class="p-2 text-muted" href="#aboutus">About</a>
         </div>
         <div class="text-center">
             <a id="sign-in" class="g-signin2" data-onsuccess="onSignIn"></a>
@@ -67,7 +68,7 @@
     </div>
 </nav>
 
-<div id="home" class="container-fluid">
+<div id="home" class="container-fluid" style="padding-top:-20px; margin-top:-20px">
     <div class="steps">
         <ol class="rounded-list">
             <li><a href="">Sign In/ Sign Up</a></li>
@@ -76,94 +77,6 @@
             <li><a href="">Share the movie link with everyone</a></li>
             <li><a href="">Video call everyone in your space</a></li>
         </ol>
-    </div>
-</div>
-
-<div id="myModal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Invite Friend to Date!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Ops, please sign in before invite friend.</p>
-            </div>
-            <div class="modal-footer">
-                <button id="return-to-signin" type="button" class="btn btn-danger btn-lg">Ok</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="letswatch" class="container">
-
-    <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-end">
-            <a id="invite-friend" class="p-2 text-muted" href="#">Invite Friends</a>
-        </nav>
-    </div>
-
-    <div class="row mb-2">
-        <div class="rounded col-md-7">
-            <div id="player"></div>
-        </div>
-        <div class="col-md-1"></div>
-
-
-        <div class="col-md-4">
-            <button onclick="getStatistics()">Get Statistics</button>
-            <div style="overflow-y: scroll" class="card box-shadow h-md-350">
-                <div class="card-body">
-                    <!--<button onclick="writeToDatabase()">WriteToFirebase</button>-->
-                    <div id="player-demo-statistics-items">
-                        Duration: <span id="videoduration"> 0 </span><br>
-                        Current time: <span id="videotime">0</span><br>
-                        Player state: <span id="playerstate">video cued</span><br>
-                        Start bytes: <span id="startbytes">0</span><br>
-                        % of video loaded: <span id="percentloaded">--</span><br>
-                        Quality level: <span id="playbackquality">unknown</span><br>
-                        Available levels: <span id="availablelevels"></span><br>
-                        Volume (on/off): <span id="ismuted">on</span><br>
-                        <span id="playbackrate-statistics">
-                Playback rate: <span id="playbackrate">1</span><br>
-                Available rates: <span id="availableplaybackrates">0.25,0.5,0.75,1,1.25,1.5,2</span><br>
-              </span>
-                        <span id="bytesdisplay-deprecated">
-                <span class="deprecated-normal"><u>Deprecated</u></span><br>
-                Bytes loaded: <span id="bytesloaded">0</span><br>
-                Total bytes: <span id="bytestotal">1</span><br>
-              </span>
-                        <div id="playlist-statistics" style="display:none">
-                            <br>Number of videos in playlist: <span id="playlistcount">undefined</span><br>
-                            Position of current video: <span id="currentplaylistvideo">-1</span><br>
-                            Videos in playlist:<br>
-                            <span id="playlistvideos"> </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-md-7 col3">
-            <div class="input-group mb-3">
-                <input id="youtubelink" type="text" class="form-control" placeholder="Insert Youtube Link">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-success my-2 my-sm-0" onclick="getLink()" type="submit">Youtube</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-4">
-            <div class="card box-shadow h-md-250">
-                <div class="card-body">
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -179,104 +92,5 @@
         <p>All Rights Reserved by Team MovieDate</p>
     </div>
 </footer>
-<script src="index.js"></script>
-<script>
-    Holder.addTheme('thumb', {
-        bg: '#55595c',
-        fg: '#eceeef',
-        text: 'Thumbnail'
-    });
-</script>
-<script>
-    // Get \you
-    // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    // 3. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-    var player;
-    var vid;
-    function getLink() {
-        var link = document.getElementById("youtubelink").value;
-        vid = link.split("=")[1];
-        player.loadVideoById(
-            vid,
-            0,
-            'large'
-        );
-    }
-    //
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-            height: '380',
-            width: '700',
-        });
-    }
-
-    //https://www.youtube.com/watch?v=KIdh9xmeJOw
-    // 4. The API will call this function when the video player is ready.
-    function onPlayerReady(event) {
-        event.target.playVideo();
-    }
-
-    // 5. The API calls this function when the player's state changes.
-    //    The function indicates that when playing a video (state=1),
-    //    the player should play for six seconds and then stop.
-    var done = false;
-
-    function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-            setTimeout(stopVideo, 6000);
-            done = true;
-        }
-    }
-
-    function stopVideo() {
-        player.stopVideo();
-    }
-
-    //6. get statics
-    function getStatistics() {
-        getDuration();
-        getVideoLoadedFraction();
-        getPlayerState();
-        getCurrentTime();
-        getPlaybackQuality();
-        //write to fire basee here.
-    }
-
-    function getDuration() {
-        var videoDuration = player.getDuration();
-        document.getElementById("videoduration").innerHTML = videoDuration;
-    }
-
-    function getVideoLoadedFraction() {
-        var loadedFrac = player.getVideoLoadedFraction();
-        document.getElementById("percentloaded").innerHTML = loadedFrac;
-    }
-
-    function getPlayerState() {
-        var playerState = player.getPlayerState();
-        document.getElementById("playerstate").innerHTML = playerState;
-    }
-
-    function getCurrentTime() {
-        var curTime = player.getCurrentTime();
-        document.getElementById("videotime").innerHTML = curTime;
-    }
-
-    function getPlaybackQuality() {
-        var playBackQA = player.getPlaybackQuality();
-        document.getElementById("playbackquality").innerHTML = playBackQA;
-    }
-
-    function randomString(length, chars) {
-        var result = '';
-        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
-        return result;
-    }
-</script>
 </body>
 </html>

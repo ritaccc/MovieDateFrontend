@@ -1,0 +1,13 @@
+body {
+    position: relative;
+}
+
+a {
+    font-family: Georgia, serif;
+}
+#uname {
+    display: none;
+}
+#sign-out {
+    display: none;
+}
